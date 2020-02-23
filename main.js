@@ -13,19 +13,27 @@ var fs = require('fs');
 count();
 
 function count() {
-   fs.readFile('input.txt', 'utf8', function(err, data) {
-      if (err) throw err;
+   fs.readFile('input.txt', 'utf8', function(err, countToInFile) {
+      if(err) 
+         throw err;
+         
+      var numberTypeCastedCountToInFile = Number(countToInFile);
+
+      if(!Number.isInteger(numberTypeCastedCountToInFile) || numberTypeCastedCountToInFile <= 0){
+         printMessage('Number needs to be a positive integer.');
+         return;
+      }
    
-      var countTo = data;
+      var countTo = numberTypeCastedCountToInFile;
    
       for(var i = 0; i <= countTo; i++){
          console.log(i);
       }
 
-      done();
+      printMessage('Done.');
     });
 }
 
-function done() {
-   console.log('done');
+function printMessage(message = '') {
+   console.log(message);
 }
