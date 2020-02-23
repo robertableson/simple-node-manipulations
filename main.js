@@ -7,3 +7,4 @@
 console.log('done');*/
 
 
+// count 0-100 by using text file number to count to 
